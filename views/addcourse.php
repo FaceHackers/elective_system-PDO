@@ -17,7 +17,14 @@
         <link href="<?= $config->cssRoot ?>menu2.css" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
         <script src="<?= $config->jsRoot ?>resetCssUrl.js"></script>
+         <?php
+            if(isset($_SESSION['alert'])) {
+               echo "<script>alert('" .$_SESSION['alert'] . "');</script>";
+               unset($_SESSION['alert']);
+            }
+        ?> 	  
         <script language="javascript" type="text/javascript">
+        
         function my_key_down(e){
             var key;
             //console.warn(e.keyCode);

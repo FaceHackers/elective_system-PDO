@@ -23,7 +23,7 @@ class curdController extends Controller {
         $student->password_hash = Tools::getPasswordHash($student->password);
             // check
             $data = $student->check();
-            
+           
             if(isset($_POST["user"])) {
             if($data){
                  header("Location: classview");
@@ -54,18 +54,15 @@ class curdController extends Controller {
                 header("Location: index");
                 exit; 
             }
-        
         $student =  $this->model("curd");
         $this->setDefaultValue($student);
         $num = $student->createclass();
         if(isset($_GET['addid'])) {
             if($num==0) {
                 $data= $student->newclass();
-                echo "<script>alert('新增成功!!'); </script>";
                 $this->classview();
         	}
     		else {
-    		    echo "<script>alert('已有選課資料，不能重複選課!!'); </script>";
                 $this->classview();
     		}
         }
@@ -81,12 +78,17 @@ class curdController extends Controller {
             }
         $student =  $this->model("curd");
         $this->setDefaultValue($student);
+        $data = $student->deletecourse();
         if(isset($_GET['delid']))
         {
-            $data = $student->deletecourse();
-            //echo "<script>alert('退選成功!!'); </script>";
-            $this->readstuu();
+            if($data){
+                 $this->readstuu();
+            }else{
+                $this->readstuu();
+            }
+            
         }
+         $this->readstuu();
     }
     //讀取學生選修課程
     function readstuu() {

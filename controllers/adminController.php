@@ -64,7 +64,8 @@ class adminController extends Controller {
         $admin =  $this->model("admincurd");
         $this->setDefaultValue($admin);
         $data= $admin->update();
-        //echo "<script>alert('修改成功!!'); </script>";
+        
+        
         $this->readcourse();     
     }
     //讀取課程ID
@@ -94,12 +95,12 @@ class adminController extends Controller {
         if(isset($_POST['course_id'])) {
             if($num==0) {
                 $data= $admin->addcourse();
-                echo "<script>alert('新增成功!!'); </script>";
+                
                 $this->readcourse();
                 exit;
         	}
     		else {
-    		    echo "<script>alert('課程代號重複!!'); </script>";
+    		    
                 $this->view("addcourse");
     		}
         }
@@ -132,12 +133,11 @@ class adminController extends Controller {
         if(isset($_POST['student_id'])) {
             if($num==0) {
                 $data= $student->addstu();
-                echo "<script>alert('新增成功!!'); </script>";
+                
                 $this->adminstu();
                 exit;
         	}
     		else {
-    		    echo "<script>alert('課程代號重複!!'); </script>";
                 $this->view("addstu");
     		}
         }

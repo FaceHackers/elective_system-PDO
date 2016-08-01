@@ -13,7 +13,12 @@
         <link href="<?= $config->cssRoot ?>table.css" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
         <script src="<?= $config->jsRoot ?>resetCssUrl.js"></script>
-        
+        <?php
+            if(isset($_SESSION['alert'])) {
+               echo "<script>alert('" .$_SESSION['alert'] . "');</script>";
+               unset($_SESSION['alert']);
+            }
+        ?> 	  
     </head>
     <body>
         <?php
@@ -32,6 +37,7 @@
             </thead>
         <tbody class="table-hover">
              <?php
+            if(!empty($data)){
                 foreach ($data as $row) {
              ?>
             <tr>
@@ -42,7 +48,7 @@
                 <td class="text-left"><?=htmlspecialchars($row["Credit"]);?></td>
                 <td class="text-left"><a href="delcourse?delid=<?=htmlspecialchars($row["course_id"]);?>" >退選</a></td>
             </tr>
-            <?php } ?>
+            <?php }} ?>
             </tbody>
         </table>
     	

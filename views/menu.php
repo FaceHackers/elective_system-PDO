@@ -8,5 +8,4 @@
             <li><a href="readstuu">檢視選修課清單</a></li>
             <li><a href="loginout">登出系統</a></li>
   </ul>
-      
 </html>

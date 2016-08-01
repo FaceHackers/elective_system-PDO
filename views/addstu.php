@@ -17,7 +17,12 @@
         <link href="<?= $config->cssRoot ?>menu2.css" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
        <script src="<?= $config->jsRoot ?>resetCssUrl.js"></script>
-        
+         <?php
+            if(isset($_SESSION['alert'])) {
+               echo "<script>alert('" .$_SESSION['alert'] . "');</script>";
+               unset($_SESSION['alert']);
+            }
+        ?> 	  
         <script> 
             // function checkLeave(){ 
             // event.returnValue="確定要離開當前頁面嗎？"; 

@@ -1,5 +1,4 @@
 <?php
-    session_start();
     class curd {
         
         public function __construct() {
@@ -17,9 +16,10 @@
             $PDO->closeConnection();
             if($data){
                 $_SESSION["iflogin"]=1;
-                $_SESSION['loginid'] = $data[0]; 
+                $_SESSION['loginid'] = $data[0];
                 return true;
             }else{
+                $_SESSION['alert'] = "帳號或密碼錯誤";
                 return false;
             }
         }
@@ -42,7 +42,11 @@
             $stmt->execute();
             $rows = $stmt->fetch(); 
             $PDO->closeConnection();
-            return $rows;
+            //return $rows;
+            if($rows > 0) {
+                $_SESSION['alert'] = "選課資料重複";
+                return true;
+            }
         }
         //新增課程資料
         public function newclass (){
@@ -55,7 +59,14 @@
             $stmt->execute();
             $data = $stmt->fetch();
             $PDO->closeConnection();
-            return $data;
+            //return $data;
+            if($data){
+                 $_SESSION['alert'] = "加選失敗";
+                return true;
+            }else{
+                $_SESSION['alert'] = "加選成功";
+                return false;
+            }
         }
         //讀取選課課程資料
         public function readviewclass() {
@@ -88,7 +99,14 @@
             $stmt->execute();
             $data = $stmt->fetch(); 
             $PDO->closeConnection();
-            return $data;
+            
+            if($data){
+                 $_SESSION['alert'] = "退選失敗";
+                return true;
+            }else{
+                $_SESSION['alert'] = "退選成功";
+                return false;
+            }
 		}
 		//讀取學生基本資料
 		public function readstu() {

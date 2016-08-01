@@ -42,7 +42,11 @@
             $stmt->execute();
             $rows = $stmt->fetch(); 
             $PDO->closeConnection();
-            return $rows;
+            //return $rows;
+            if($rows > 0) {
+                $_SESSION['alert'] = "課程代號重複";
+                return true;
+            }
         }
         //新增課程資料
         public function addcourse() {
@@ -57,7 +61,14 @@
             $stmt->bindValue(5, $this->Credit);
             $data = $stmt->execute();
             $PDO->closeConnection();
-            return $data;
+            //return $data;
+            if($data){
+                 $_SESSION['alert'] = "新增失敗";
+                return true;
+            }else{
+                $_SESSION['alert'] = "新增成功";
+                return false;
+            }
         }
         //修改課程
         public function update()
@@ -84,7 +95,11 @@
             $stmt->execute();
             $rows = $stmt->fetch(); 
             $PDO->closeConnection();
-            return $rows;
+            //return $rows;
+             if($rows > 0) {
+                $_SESSION['alert'] = "學號重複";
+                return true;
+            }
         }
         //新增學生資料
         public function addstu (){
@@ -100,7 +115,14 @@
             $stmt->bindValue(6, $this->password_hash);
             $data = $stmt->execute();
             $PDO->closeConnection();
-            return $data;
+            //return $data;
+             if($data){
+                 $_SESSION['alert'] = "新增成功";
+                return true;
+            }else{
+                $_SESSION['alert'] = "新增失敗";
+                return false;
+            }
         }
         //讀取學生資料
         public function readstu() {
