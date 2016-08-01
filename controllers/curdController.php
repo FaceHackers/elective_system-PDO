@@ -36,12 +36,25 @@ class curdController extends Controller {
     }
     //讀取選修課程清單
     function classview() {
+        $session =  $this->model("curd");
+        $dataa = $session->sessionDecide();
+        if($dataa){
+                header("Location: index");
+                exit; 
+            }
         $crud =  $this->model("curd");
         $data = $crud->readclass();
         $this->view("classview", $data);
     }
     //新增選修課程
     function addcourse() {
+        $session =  $this->model("curd");
+        $dataa = $session->sessionDecide();
+        if($dataa){
+                header("Location: index");
+                exit; 
+            }
+        
         $student =  $this->model("curd");
         $this->setDefaultValue($student);
         $num = $student->createclass();
@@ -60,17 +73,29 @@ class curdController extends Controller {
     }
     //刪除選修課程
     function delcourse() {
+        $session =  $this->model("curd");
+        $dataa = $session->sessionDecide();
+        if($dataa){
+                header("Location: index");
+                exit; 
+            }
         $student =  $this->model("curd");
         $this->setDefaultValue($student);
         if(isset($_GET['delid']))
         {
             $data = $student->deletecourse();
-            echo "<script>alert('退選成功!!'); </script>";
+            //echo "<script>alert('退選成功!!'); </script>";
             $this->readstuu();
         }
     }
     //讀取學生選修課程
     function readstuu() {
+        $session =  $this->model("curd");
+        $dataa = $session->sessionDecide();
+        if($dataa){
+                header("Location: index");
+                exit; 
+            }
         $student =  $this->model("curd");
         $this->setDefaultValue($student);
         $data = $student->readviewclass();
@@ -85,6 +110,12 @@ class curdController extends Controller {
     }
     //讀取學生個人資料
     function readstu() {
+        $session =  $this->model("curd");
+        $dataa = $session->sessionDecide();
+        if($dataa){
+                header("Location: index");
+                exit; 
+            }
         $student =  $this->model("curd");
         $this->setDefaultValue($student);
         $data = $student->readstu();

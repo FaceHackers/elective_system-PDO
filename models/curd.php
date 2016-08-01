@@ -101,5 +101,13 @@
             $PDO->closeConnection();
             return $data;
 		}
+		public function sessionDecide() {
+		    if($_SESSION["iflogin"]==0){
+                return true;
+	        }else{
+	            return false;
+	        }
+		}
+		
     }
 ?>

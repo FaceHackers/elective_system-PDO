@@ -43,12 +43,24 @@ class adminController extends Controller {
     }
     //讀取課程清單
     function readcourse() {
+        $session =  $this->model("admincurd");
+        $dataa = $session->sessionDecide();
+        if($dataa){
+                header("Location: admin");
+                exit; 
+            }
         $crud =  $this->model("admincurd");
         $data = $crud->readclass();
         $this->view("adminclass", $data);
     }
     //修改課程資料
     function update() {
+        $session =  $this->model("admincurd");
+        $dataa = $session->sessionDecide();
+        if($dataa){
+                header("Location: admin");
+                exit; 
+            }
         $admin =  $this->model("admincurd");
         $this->setDefaultValue($admin);
         $data= $admin->update();
@@ -57,6 +69,12 @@ class adminController extends Controller {
     }
     //讀取課程ID
     function readmodify() {
+        $session =  $this->model("admincurd");
+        $dataa = $session->sessionDecide();
+        if($dataa){
+                header("Location: admin");
+                exit; 
+            }
         $admin =  $this->model("admincurd");
         $this->setDefaultValue($admin);
         $data = $admin->readid();
@@ -64,6 +82,12 @@ class adminController extends Controller {
     }
     //新增課程
     function addcourse() {
+        $session =  $this->model("admincurd");
+        $dataa = $session->sessionDecide();
+        if($dataa){
+                header("Location: admin");
+                exit; 
+            }
         $admin =  $this->model("admincurd");
         $this->setDefaultValue($admin);
         $num = $admin->checkclassid();
@@ -83,12 +107,24 @@ class adminController extends Controller {
     }
     //讀取學生資料
     function adminstu() {
+        $session =  $this->model("admincurd");
+        $dataa = $session->sessionDecide();
+        if($dataa){
+                header("Location: admin");
+                exit; 
+            }
         $crud =  $this->model("admincurd");
         $data = $crud->readstu();
         $this->view("adminstu", $data);
     }
     //新增學生資料
     function addstu() {
+        $session =  $this->model("admincurd");
+        $dataa = $session->sessionDecide();
+        if($dataa){
+                header("Location: admin");
+                exit; 
+            }
         $student =  $this->model("admincurd");
         $this->setstutValue($student);
         $student->password_hash = Tools::getPasswordHash($student->password);
