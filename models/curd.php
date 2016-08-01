@@ -12,10 +12,8 @@
             $stmt = $conn->prepare("SELECT * FROM `student` WHERE `student_id` = ? and `password` = ? LIMIT 1");
             $stmt->bindValue(1, $this->student_id, PDO::PARAM_STR);
             $stmt->bindValue(2, $this->password_hash, PDO::PARAM_STR);
-    
             $stmt->execute();
             $data = $stmt->fetch();
-           
             $PDO->closeConnection();
             if($data){
                 $_SESSION["iflogin"]=1;
@@ -32,9 +30,7 @@
             $stmt = $conn->prepare("SELECT * FROM `course` order by `course_id`");
             $stmt->execute();
             $data = $stmt->fetchAll();
-            
             $PDO->closeConnection();
-    
             return $data;
         }
         //判斷課程資料
@@ -46,7 +42,6 @@
             $stmt->execute();
             $rows = $stmt->fetch(); 
             $PDO->closeConnection();
-    
             return $rows;
         }
         //新增課程資料
@@ -57,12 +52,9 @@
             $stmt = $conn->prepare($sql);
             $stmt->bindValue(1, $this->loginid, PDO::PARAM_STR);
             $stmt->bindValue(2, $this->addid, PDO::PARAM_STR);
-            
             $stmt->execute();
             $data = $stmt->fetch();
-            
             $PDO->closeConnection();
-            
             return $data;
         }
         //讀取選課課程資料
@@ -74,7 +66,6 @@
             $stmt->execute();
             $data = $stmt->fetchAll(); 
             $PDO->closeConnection();
-    
             return $data;
         }
         //讀取課程ID
@@ -86,7 +77,6 @@
             $stmt->execute();
             $data = $stmt->fetch(); 
             $PDO->closeConnection();
-    
             return $data;
 		}
         //刪除課程資料表
@@ -98,9 +88,7 @@
             $stmt->execute();
             $data = $stmt->fetch(); 
             $PDO->closeConnection();
-    
             return $data;
-		    
 		}
 		//讀取學生基本資料
 		public function readstu() {

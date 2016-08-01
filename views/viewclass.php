@@ -31,12 +31,9 @@
                 </tr>
             </thead>
         <tbody class="table-hover">
-       
              <?php
-               
                 foreach ($data as $row) {
              ?>
-       
             <tr>
                 <td class="text-left"><?=htmlspecialchars($row["course_id"]);?></td>
                 <td class="text-left"><?=htmlspecialchars($row["course_name"]);?></td>
@@ -45,7 +42,7 @@
                 <td class="text-left"><?=htmlspecialchars($row["Credit"]);?></td>
                 <td class="text-left"><a href="delcourse?delid=<?=htmlspecialchars($row["course_id"]);?>" >退選</a></td>
             </tr>
-        <?php } ?>
+            <?php } ?>
             </tbody>
         </table>
     	

@@ -12,13 +12,11 @@
         <link rel="icon" href="http://static.tmimgcdn.com/img/favicon.ico">
         <link rel="stylesheet" type="text/css" media="all" href="<?= $config->cssRoot ?>form.css">
         <link rel="stylesheet" type="text/css" media="all" href="<?= $config->cssRoot ?>switchery.min.css">
-         <script type="text/javascript" src="<?= $config->jsRoot ?>switchery.min.js"></script>
+        <script type="text/javascript" src="<?= $config->jsRoot ?>switchery.min.js"></script>
         <link href="<?= $config->cssRoot ?>layout.css" rel="stylesheet" type="text/css" />
         <link href="<?= $config->cssRoot ?>menu2.css" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-       <script src="<?= $config->jsRoot ?>resetCssUrl.js"></script>
-        
-       
+        <script src="<?= $config->jsRoot ?>resetCssUrl.js"></script>
         <script language="javascript" type="text/javascript">
         function my_key_down(e){
             var key;
@@ -79,8 +77,6 @@
       <input placeholder="例電1、電3" id="course_place" name="course_place" tabindex="4" maxlength="15" autofocus = "autofocus" autocomplete="off" required>
     </label>
   </div>
-  
-  
   <div class="col-4">
     <label>
      學分

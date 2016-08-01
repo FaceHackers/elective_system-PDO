@@ -32,11 +32,9 @@
                 </tr>
             </thead>
         <tbody class="table-hover">
-         <?php
-            
+            <?php
                 foreach ($data as $row) {
-                         
-        ?>
+            ?>
             <tr>
                 <td class="text-left"><?=htmlspecialchars($row["student_id"]);?></td>
                 <td class="text-left"><?=htmlspecialchars($row["student_name"]);?></td>
@@ -45,7 +43,6 @@
                 <td class="text-left"><?=htmlspecialchars($row["class"]);?></td>
             </tr>
            <?php } ?>
-               
         </tbody>
     </table>
     </body>

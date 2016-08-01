@@ -46,7 +46,6 @@ class adminController extends Controller {
         $crud =  $this->model("admincurd");
         $data = $crud->readclass();
         $this->view("adminclass", $data);
-        
     }
     //修改課程資料
     function update() {
@@ -110,7 +109,6 @@ class adminController extends Controller {
     }
     //登出系統
     function loginout2() {
-        //$_SEESION["iflogin"]=0;
         session_destroy();
         header("Location: ".$this->root."admin");
         exit;

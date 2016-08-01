@@ -31,12 +31,12 @@ class Config {
         
         
         /* 不需要經過 是否登入狀態 的 action */
-        // $this->whiteList = array(  "home",
-        //                             "player/isAccountExsist", 
-        //                             "player/isNicknameExsist",
-        //                             "player/forgetPassword",
-        //                             "player/login",
-        //                             "player/registe" 
-        //                         );
+        $this->whiteList = array(  "curd/index",
+                                    // "player/isAccountExsist", 
+                                    // "player/isNicknameExsist",
+                                    // "player/forgetPassword",
+                                    // "player/login",
+                                    // "player/registe" 
+                                );
     }
 }

@@ -3,28 +3,10 @@
 class App{
     public function __construct() {
         $config = new Config();
-        
-		if(!isset($_GET['url'])){
-			header("Location: ".$config->root."curd");
-			exit;
-		}
-        
         $url = $this->parseUrl();
-        
         //$url[0] = ucfirst($url[0]); //unfirst 第一字元改為大寫
-        
         $controllerName =  "{$url[0]}Controller";
-        //判斷是否為登入
-    //     if(!in_array($_GET["url"], $config->whiteList)){
-    //         if (session_status() == PHP_SESSION_NONE) {
-    //             session_start();
-    //         }
-    // 		if(empty( $_SESSION['isLogin'] ) || $_SESSION['isLogin'] != 'true'){
-    // 		    header("Location: ".$config->root."home");
-    // 		    exit;
-    // 		}
-    //     }
-        
+       
         if (!file_exists("controllers/$controllerName.php"))
             $controllerName = 'curdController';
         require_once "controllers/$controllerName.php";
@@ -36,7 +18,6 @@ class App{
         $params = $url ? array_values($url) : Array();
         call_user_func_array(Array($controller, $methodName), $params);
     }
-    
     public function parseUrl() {
         if (isset($_GET["url"])) {
             $url = rtrim($_GET["url"], "/");

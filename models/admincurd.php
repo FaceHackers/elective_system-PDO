@@ -12,11 +12,9 @@
             $stmt = $conn->prepare("SELECT * FROM `teacher` WHERE `teacher_id` = ? and `password` = ? LIMIT 1");
             $stmt->bindValue(1, $this->admin, PDO::PARAM_STR);
             $stmt->bindValue(2, $this->password_hash, PDO::PARAM_STR);
-            
             $stmt->execute();
             $data = $stmt->fetch();
             $PDO->closeConnection();
-            
             if($data){
                 $_SESSION["iflogin"]=1;
                 $_SESSION['loginid'] = $data[0]; 
@@ -32,9 +30,7 @@
             $stmt = $conn->prepare("SELECT * FROM `course` order by `course_id`");
             $stmt->execute();
             $data = $stmt->fetchAll();
-            
             $PDO->closeConnection();
-    
             return $data;
         }
         //判斷課程資料
@@ -46,7 +42,6 @@
             $stmt->execute();
             $rows = $stmt->fetch(); 
             $PDO->closeConnection();
-    
             return $rows;
         }
         //新增課程資料
@@ -60,17 +55,13 @@
             $stmt->bindValue(3, $this->teacher_name);
             $stmt->bindValue(4, $this->course_place);
             $stmt->bindValue(5, $this->Credit);
-           
             $data = $stmt->execute();
-            
             $PDO->closeConnection();
-            
             return $data;
         }
         //修改課程
         public function update()
          {
-            //return mysql_query("UPDATE course SET course_name='$course_name', teacher_name='$teacher_name', course_place='$course_place', Credit='$Credit' WHERE course_id=".$course_id);
             $PDO = new myPDO();
             $conn = $PDO->getConnection();
             $sql = "UPDATE `course` SET `course_name` = ?, `teacher_name` = ?, `course_place` = ?, `Credit` = ? WHERE `course_id` = ?";
@@ -80,11 +71,8 @@
             $stmt->bindValue(3, $this->course_place, PDO::PARAM_STR);
             $stmt->bindValue(4, $this->Credit, PDO::PARAM_STR);
             $stmt->bindValue(5, $this->course_id, PDO::PARAM_STR);
-           
             $data = $stmt->execute();
-            
             $PDO->closeConnection();
-            
             return $data;
          }
         //判斷學生資料
@@ -96,7 +84,6 @@
             $stmt->execute();
             $rows = $stmt->fetch(); 
             $PDO->closeConnection();
-    
             return $rows;
         }
         //新增學生資料
@@ -104,7 +91,6 @@
             $PDO = new myPDO();
             $conn = $PDO->getConnection();
             $sql = "INSERT INTO `student` (`student_id`,`student_name`,`Dept`,`sex`,`class`,`password`) VALUES (?, ?, ?, ?, ?, ?)";
-            
             $stmt = $conn->prepare($sql);
             $stmt->bindValue(1, $this->student_id, PDO::PARAM_STR);
             $stmt->bindValue(2, $this->student_name, PDO::PARAM_STR);
@@ -113,9 +99,7 @@
             $stmt->bindValue(5, $this->classs, PDO::PARAM_STR);
             $stmt->bindValue(6, $this->password_hash);
             $data = $stmt->execute();
-            
             $PDO->closeConnection();
-            
             return $data;
         }
         //讀取學生資料
@@ -125,9 +109,7 @@
             $stmt = $conn->prepare("SELECT * FROM `student` order by `student_id`");
             $stmt->execute();
             $data = $stmt->fetchAll();
-            
             $PDO->closeConnection();
-    
             return $data;
         }
         //讀取修改資料
@@ -139,7 +121,6 @@
             $stmt->execute();
             $data = $stmt->fetch();
             $PDO->closeConnection();
-    
             return $data;
         }
     }

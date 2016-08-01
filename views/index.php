@@ -1,8 +1,3 @@
-<?php 
-    session_start(); 
-    // require_once '../models/curd.php';
-    // $crud = new CRUD();
-?>
 <!DOCTYPE html>
 <html >
   <head>

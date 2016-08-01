@@ -18,7 +18,7 @@
     </head>
     <body>
     <?php
-        require_once 'iflogin.php';
+        //require_once 'iflogin.php';
         require_once 'menu.php';
     ?>
         <table class="table-fill">

@@ -7,20 +7,19 @@ class curdController extends Controller {
      
      //接收使用者資料值
      function setDefaultValue($student){
-        $student->student_id = isset( $_POST["user"] ) ? $_POST["user"] : "" ;
-        $student->password = isset( $_POST["password"] ) ? $_POST["password"] : "" ;
-        $student->addid = isset( $_GET['addid'] ) ? $_GET['addid'] : "" ;
-        $student->loginid = isset( $_SESSION["loginid"] ) ? $_SESSION["loginid"] : "" ;
-        $student->delid = isset( $_GET['delid'] ) ? $_GET['delid'] : "" ;
+        $student->student_id    = isset( $_POST["user"] ) ? $_POST["user"] : "" ;
+        $student->password      = isset( $_POST["password"] ) ? $_POST["password"] : "" ;
+        $student->addid         = isset( $_GET['addid'] ) ? $_GET['addid'] : "" ;
+        $student->loginid       = isset( $_SESSION["loginid"] ) ? $_SESSION["loginid"] : "" ;
+        $student->delid         = isset( $_GET['delid'] ) ? $_GET['delid'] : "" ;
     }
     function index() {
        $this->view("index");
     }
-     //確認學生資料
+    //確認學生資料
     function login() {
         $student= $this->model("curd");
         $this->setDefaultValue($student);
-        
         $student->password_hash = Tools::getPasswordHash($student->password);
             // check
             $data = $student->check();
@@ -33,9 +32,7 @@ class curdController extends Controller {
                 $this->view("index");
             }
         }
-      
         $this->view("index");
-        
     }
     //讀取選修課程清單
     function classview() {
@@ -47,7 +44,6 @@ class curdController extends Controller {
     function addcourse() {
         $student =  $this->model("curd");
         $this->setDefaultValue($student);
-        
         $num = $student->createclass();
         if(isset($_GET['addid'])) {
             if($num==0) {
@@ -60,23 +56,17 @@ class curdController extends Controller {
                 $this->classview();
     		}
         }
-            //header("Location: index.php");
         $this->classview();
-        
     }
-     //刪除選修課程
+    //刪除選修課程
     function delcourse() {
         $student =  $this->model("curd");
         $this->setDefaultValue($student);
-        // var_dump($student);
-        // exit;
         if(isset($_GET['delid']))
         {
-            
             $data = $student->deletecourse();
             echo "<script>alert('退選成功!!'); </script>";
             $this->readstuu();
-            //header("Location: index.php");
         }
     }
     //讀取學生選修課程
@@ -84,7 +74,6 @@ class curdController extends Controller {
         $student =  $this->model("curd");
         $this->setDefaultValue($student);
         $data = $student->readviewclass();
-        
         $dataArray;
         foreach($data as $row){
             $classID = $student->readClassID($row['course_id']);
@@ -98,17 +87,13 @@ class curdController extends Controller {
     function readstu() {
         $student =  $this->model("curd");
         $this->setDefaultValue($student);
-        
         $data = $student->readstu();
         $this->view("stu", $data);
-        
     }
     //登出系統
     function loginout() {
-       
         session_destroy();
         header("Location: ".$this->root."index");
         exit;
     }
-    
 }
