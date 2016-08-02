@@ -33,7 +33,6 @@
                     <th class="text-left">教師姓名</th>
                     <th class="text-left">上課地點</th>
                     <th class="text-left">學分</th>
-                    
                     <th class="text-left">選課</th>
                 </tr>
             </thead>

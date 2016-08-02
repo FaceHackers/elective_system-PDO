@@ -1,11 +1,3 @@
-<?php 
-    session_start(); 
-    
-    // require_once '../models/admincurd.php';
-    // $crud = new AdminCRUD();
-  
-?>
- 
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>

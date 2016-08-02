@@ -61,14 +61,8 @@
             $stmt->bindValue(5, $this->Credit);
             $data = $stmt->execute();
             $PDO->closeConnection();
-            //return $data;
-            if($data){
-                 $_SESSION['alert'] = "新增失敗";
-                return true;
-            }else{
-                $_SESSION['alert'] = "新增成功";
-                return false;
-            }
+            return $data;
+            
         }
         //修改課程
         public function update()
@@ -119,9 +113,6 @@
              if($data){
                  $_SESSION['alert'] = "新增成功";
                 return true;
-            }else{
-                $_SESSION['alert'] = "新增失敗";
-                return false;
             }
         }
         //讀取學生資料

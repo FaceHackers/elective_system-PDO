@@ -24,11 +24,6 @@
                unset($_SESSION['alert']);
             }
         ?> 	  
-        <script> 
-            // function checkLeave(){ 
-            // event.returnValue="確定要離開當前頁面嗎？"; 
-            // } 
-          </script>
         <script language="javascript" type="text/javascript">
         function my_key_down(e){
             var key;

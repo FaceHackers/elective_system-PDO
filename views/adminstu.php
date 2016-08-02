@@ -4,7 +4,6 @@
         <meta charset="utf-8" />
         <title>後台選課系統</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-       
         <script>
             var root = '<?= $config->root ?>';
             var imgRoot = '<?= $config->imgRoot ?>';
@@ -14,7 +13,6 @@
         <link href="<?= $config->cssRoot ?>table.css" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
         <script src="<?= $config->jsRoot ?>resetCssUrl.js"></script>
-        
     </head>
     <body>
     <?php

@@ -61,11 +61,8 @@
             $PDO->closeConnection();
             //return $data;
             if($data){
-                 $_SESSION['alert'] = "加選失敗";
+                 $_SESSION['alert'] = "加選成功";
                 return true;
-            }else{
-                $_SESSION['alert'] = "加選成功";
-                return false;
             }
         }
         //讀取選課課程資料
@@ -101,11 +98,8 @@
             $PDO->closeConnection();
             
             if($data){
-                 $_SESSION['alert'] = "退選失敗";
+                 $_SESSION['alert'] = "退選成功";
                 return true;
-            }else{
-                $_SESSION['alert'] = "退選成功";
-                return false;
             }
 		}
 		//讀取學生基本資料
