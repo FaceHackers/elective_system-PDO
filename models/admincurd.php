@@ -1,6 +1,6 @@
   <?php
     session_start();
-    echo "<meta charset='utf-8'>";
+    
     class admincurd {
         public function __construct() {
             
